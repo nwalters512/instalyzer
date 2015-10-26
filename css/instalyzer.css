@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+body {
+  background: -webkit-linear-gradient(top, #51a4a4, #306088) no-repeat center center fixed;
+  background: -moz-linear-gradient(top, #51a4a4, #306088) no-repeat center center fixed;
+  background: -o-linear-gradient(top, #51a4a4, #306088) no-repeat center center fixed;
+  background: -ms-linear-gradient(top, #51a4a4, #306088) no-repeat center center fixed;
+  background: linear-gradient(top, #51a4a4, #306088) no-repeat center center fixed;
+  background-size: cover;
+}
+#search-container {
+  width: 100%;
+  margin-top: 30px;
+}
+#search {
+  width: 300px;
+  margin: auto;
+}
+#search-box {
+  width: 100%;
+  height: 50px;
+}
+#search-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 5px 10px 5px 50px;
+  font-size: 30px;
+  outline: none;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 25px;
+}
+#search-box span {
+  font-size: 30px;
+  position: absolute;
+  line-height: 50px;
+  width: 50px;
+  text-align: center;
+}
+#submit {
+  color: white;
+  background-color: #125688;
+  font-size: 24px;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+  padding: 10px;
+  height: 50px;
+  border-radius: 25px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+#recent-posts {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 50px;
+  word-wrap: break-word;
+}
+#recent-posts-header {
+  color: white;
+  text-align: center;
+  font-size: 40px;
+}
+.hidden {
+  display: none;
+}
+.post {
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background: white;
+}
+.post p {
+  margin: 0px;
+}
+.post-header {
+  color: black;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.border-bottom {
+  border-bottom:1px solid rgb(177, 177, 177);
+}
+.post-profile-image {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 9px 1px rgba(200, 200, 200, 1);
+}
+.post-user-details {
+  margin-left: auto;
+  cursor: pointer;
+}
+.post-info {
+  background: white;
+}
+.post-image {
+  width: 100%;
+}
+.post-caption {
+  font-size: 14px;
+  padding: 10px;
+}
+.post-statistics {
+  font-size: 14px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.post-statistics i {
+  color: red;
+  padding-right: 10px;
+}

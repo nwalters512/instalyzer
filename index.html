@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+  <title>Instalyzer</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <!-- Styles -->
+  <link type="text/css" href="css/instalyzer.css" rel="stylesheet" />
+  <link type="text/css" href="css/spinner.css" rel="stylesheet" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="js/instalyzer.js"></script>
+
+  <script id="template-post" type="text/x-handlebars-template">
+    <div class="post">
+      <div class="post-header border-bottom">
+        <img class="post-profile-image" src="{{user.profile_picture}}" /> {{user.username}} {{relative_created_time}}
+        <a class="post-user-details" data-user-id="{{user.id}}">User details</a>
+      </div>
+      <img class="post-image border-bottom" src="{{images.standard_resolution.url}}" />
+      <div class="post-info">
+        <p class="post-statistics border-bottom"><i class="fa fa-heart"></i>{{likes.count}}; {{sentiment}}</p>
+        <p class="post-caption">{{caption.text}}</p>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-user-details" type="text/x-handlebars-template">
+    <p><b>Username:</b> {{username}}</p>
+    <p><b>Full name:</b> {{full_name}}</p>
+    <p><b>Bio:</b> {{bio}}</p>
+    <p><b>Post count:</b> {{counts.media}} posts</p>
+    <p><b>Followed by:</b> {{counts.followed_by}} users</p>
+    <p><b>Follows:</b> {{counts.follows}} users</p>
+  </script>
+</head>
+
+<body>
+  <!-- User details modal -->
+  <div id="user-details" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">User Details</h4>
+        </div>
+        <div class="modal-body">
+          <div id="user-details-loading">
+            <div class="spinner spinner-blue">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
+            </div>
+          </div>
+          <div id="user-details-content">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Search -->
+  <div id="search-container">
+    <div id="search">
+      <div id="search-box">
+        <span class="hash">#</span>
+        <input type="text" id="tag-input" value="">
+      </div>
+      <a id="submit">Instalyze</a>
+    </div>
+  </div>
+  <!-- Recent posts -->
+  <div id="recent-posts">
+    <div id="recent-posts-content" class="hidden">
+      <h2 id="recent-posts-header">Recent Posts</h2>
+      <div id="recent-posts-list">
+      </div>
+    </div>
+    <div id="recent-posts-loading" class="hidden">
+      <div class="spinner spinner-white">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
