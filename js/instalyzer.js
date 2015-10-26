@@ -1,17 +1,5 @@
 var CLIENT_ID = "f9cbf4d718434684a482f1ca5b862579";
 
-$(document).ready(function() {
-  // Wire up click listener for submit button
-  $('#submit').click(function() {
-    fetchPostsForTag($('#tag-input').val());
-  });
-
-  $(document).on('click', '.post-user-details', function() {
-    $("#user-details").modal('show');
-    fetchUserDetails($(this).data("user-id"));
-  });
-});
-
 function generateApiUrlForTagQuery(tag) {
   return "https://api.instagram.com/v1/tags/" + tag + "/media/recent?client_id=" + CLIENT_ID;
 }
@@ -19,6 +7,19 @@ function generateApiUrlForTagQuery(tag) {
 function generateApiUrlForUserQuery(userId) {
   return "https://api.instagram.com/v1/users/" + userId + "/?client_id=" + CLIENT_ID;
 }
+
+// Wire up everything once the document is ready
+$(document).ready(function() {
+  $('#submit').click(function() {
+    fetchPostsForTag($('#tag-input').val());
+  });
+
+  // We use a global handler becase these elements will be dynamically generated
+  $(document).on('click', '.post-user-details', function() {
+    $("#user-details").modal('show');
+    fetchUserDetails($(this).data("user-id"));
+  });
+});
 
 function fetchPostsForTag(tag) {
   $.ajax({
@@ -42,9 +43,6 @@ function handlePosts(posts) {
 
   // Clear any existing content from the recent posts list
   $('#recent-posts-list').empty();
-  // Hide loading indicator, show the list
-  $('#recent-posts-loading').addClass('hidden');
-  $('#recent-posts-content').removeClass('hidden');
 
   // Create templates to be filled with content from instagram
   var postTemplate = Handlebars.compile($('#template-post').html());
@@ -88,9 +86,13 @@ function handlePosts(posts) {
 
     // Bind post details into the template
     var html = postTemplate(post);
-    // Append the bound template to the list
+    // Append the generated html to the list
     $('#recent-posts-list').append(html);
   }
+
+  // Hide loading indicator, show the list
+  $('#recent-posts-loading').addClass('hidden');
+  $('#recent-posts-content').removeClass('hidden');
 }
 
 function fetchUserDetails(userId) {
@@ -113,17 +115,19 @@ function fetchUserDetails(userId) {
 function handleUserDetails(user) {
   console.log(user);
 
-  // Clear any existing content from the recent posts list
+  // Clear any existing content from user details modal
   $('#user-details-content').empty();
-  // Hide loading indicator, show the list
-  $('#user-details-loading').addClass('hidden');
-  $('#user-details-content').removeClass('hidden');
 
-  // Create templates to be filled with content from instagram
+  // Create templates to be filled with user details
   var userTemplate = Handlebars.compile($('#template-user-details').html());
 
-  // Bind info into the template
+  // Bind user details into the template
   var html = userTemplate(user);
-  // Append the bound template to the list
+
+  // Insert the generated html into the DOM
   $('#user-details-content').append(html);
+
+  // Hide loading indicator, show user details
+  $('#user-details-loading').addClass('hidden');
+  $('#user-details-content').removeClass('hidden');
 }
