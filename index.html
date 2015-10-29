@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  
+
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -23,14 +23,16 @@
   <script id="template-post" type="text/x-handlebars-template">
     <div class="post">
       <div class="post-header border-bottom">
-        <img class="post-profile-image" src="{{user.profile_picture}}" /> {{user.username}} {{relative_created_time}}
-        <a class="post-user-details" data-user-id="{{user.id}}">User details</a>
+        <img class="post-profile-image" src="{{user.profile_picture}}" />
+        <a class="post-user-details" data-user-id="{{user.id}}">{{user.username}}</a>
+        <p class="post-time">{{relative_created_time}}</p>
       </div>
       <img class="post-image border-bottom" src="{{images.standard_resolution.url}}" />
-      <div class="post-info">
-        <p class="post-statistics border-bottom"><i class="fa fa-heart"></i>{{likes.count}}; {{sentiment}}</p>
-        <p class="post-caption">{{caption.text}}</p>
+      <div class="post-info border-bottom">
+        <div class="post-likes"><i class="fa fa-heart"></i>{{likes.count}}</div>
+        <div class="post-sentiment">{{sentiment}}</div>
       </div>
+      <div class="post-caption">{{caption.text}}</div>
     </div>
   </script>
 
